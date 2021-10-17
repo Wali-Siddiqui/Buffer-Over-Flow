@@ -3,8 +3,8 @@ import os
 import sys,socket
 from time import sleep
 buff = "A" * 100                                                    # Sending 100 * A characters
-victimIp = '192.168.100.78'                                         # Enter Victim's IP Address 
-victimPort = 9999
+victimIp = 'xxx.xxx.xxx.xxx'                                        # Enter Victim's IP Address 
+victimPort = xxxx
 
 while True:
     try:
